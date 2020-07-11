@@ -13,7 +13,13 @@
     <arg name="clip_distance"             default="-2"/>
     <arg name="use_rviz"                  default="true"/>
     <arg name="use_rtabmapviz"            default="false"/>
-    
+    <arg name="model" default="$(find realsense2_camera)/launch/mini_cheetah_simple_v2.urdf"/>
+
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />	
+
+    <rosparam>
+         /t265/tracking_module/enable_relocalization: false
+    </rosparam>
 
     <include file="$(find realsense2_camera)/launch/rs_d400_and_t265.launch">
             <arg name="device_type_camera1"             value="$(arg device_type_camera1)"/>
@@ -38,4 +44,12 @@
             <arg name="rviz"               value="$(arg use_rviz)"/>
             <arg name="rtabmapviz"         value="$(arg use_rtabmapviz)"/>
     </include>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    
+    <node pkg="tf" type="static_transform_publisher" name="to_camera" args="0.15 0 0.32 0 0 0 1 map t265_odom_frame 100"/>
+
+    <node pkg="tf" type="static_transform_publisher" name="to_body" args="-0.15 0 -0.1 0 0 0 1 t265_pose_frame body 100"/>
+
+
 </launch>
