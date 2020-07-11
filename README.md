@@ -14,4 +14,4 @@ Installation Guide:
 5. depthimage_to_laserscan https://github.com/ros-perception/depthimage_to_laserscan
 
 
-Replace rs_d400_and_t265.launch, rs_rtabmap.launch, and rtabmap.launch in package realsense2_camera, rtabmap_ros respectively.
+Replace all launch file in realsense2_camera, and rtabmap.launch in package rtabmap_ros.
