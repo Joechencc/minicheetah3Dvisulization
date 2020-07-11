@@ -10,5 +10,8 @@ Installation Guide:
 2. use beginner_tutorial for listening PCl
 3. Vision_opencv  https://github.com/ros-perception/vision_opencv  (Branch:need to be checked out base on your ROS version)
 4. Realsense_ROS https://github.com/IntelRealSense/realsense-ros
+    Realsense https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
+5. depthimage_to_laserscan https://github.com/ros-perception/depthimage_to_laserscan
 
 
+Replace rs_d400_and_t265.launch, rs_rtabmap.launch, and rtabmap.launch in package realsense2_camera, rtabmap_ros respectively.
