@@ -5,6 +5,7 @@ This will combine with MiniCheetah code and doing visualization
 
 Installation Guide:
 1. PCL 1.8 for Kinetic   https://github.com/PointCloudLibrary/pcl.git    git checkout tags/pcl-1.8.0 -b pcl-1.8.0
+
     1.11 for melodic
     
 2. use beginner_tutorial for listening PCl
