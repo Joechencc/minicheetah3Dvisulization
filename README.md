@@ -13,6 +13,6 @@ Installation Guide:
 4. Realsense_ROS https://github.com/IntelRealSense/realsense-ros
     Realsense https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
 5. depthimage_to_laserscan https://github.com/ros-perception/depthimage_to_laserscan
-6. rtabmap https://github.com/introlab/rtabmap.git
+6. rtabmap https://github.com/introlab/rtabmap_ros refer to this
 
 Replace all launch file in realsense2_camera, and rtabmap.launch in package rtabmap_ros.
