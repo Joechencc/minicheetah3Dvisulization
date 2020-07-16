@@ -1,0 +1,6 @@
+<launch>
+	<master auto="start" />
+	<group ns="lcm_to_ros">
+		<node pkg="lcm_to_ros" type="leg_control_data_republisher" respawn="false" name="leg_control_data_republisher" output="screen"/>
+	</group>
+</launch>

@@ -1,0 +1,25 @@
+package exlcm;
+
+struct example_type
+{
+    string      str;
+    boolean     flag;
+    byte        gnash;
+    int8_t      i8_scalar;
+    int8_t      i8_array[2];
+    int16_t     i16_scalar;
+    int16_t     i16_array[2];
+    int32_t     i32_scalar;
+    int32_t     i32_array[2];
+    int64_t     i64_scalar;
+    int64_t     i64_array[2];    
+    float       flt_scalar;
+    float       flt_array[2];
+    double      dbl_scalar;
+    double      dbl_array[2];
+    double      variable_length_array[i32_scalar];
+    int32_t     num_channels;
+    simple_channel channels[num_channels];
+}
+
+// HASH 0x0123456789abcdef

@@ -1,0 +1,7 @@
+<launch>
+	<master auto="start" />
+	<group ns="lcm_to_ros">
+		<node pkg="lcm_to_ros" type="example_topic_republisher" respawn="false" name="example_topic_republisher" output="screen"/>
+		<node pkg="lcm_to_ros" type="other_topic_republisher" respawn="false" name="other_topic_republisher" output="screen"/>
+	</group>
+</launch>
