@@ -208,14 +208,18 @@ include_directories(
 
 add_executable(talker src/talker.cpp)
 target_link_libraries(talker ${catkin_LIBRARIES})
-add_dependencies(talker beginner_tutorials_generate_messages_cpp)
+#add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 
 add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
-add_dependencies(listener beginner_tutorials_generate_messages_cpp)
+#add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 
 add_executable(pointcloudlistener src/pointcloudlistener.cpp)
 target_link_libraries(pointcloudlistener ${catkin_LIBRARIES})
-add_dependencies(pointcloudlistener beginner_tutorials_generate_messages_cpp)
+#add_dependencies(pointcloudlistener beginner_tutorials_generate_messages_cpp)
+
+#add_executable(leglistener src/leglistener.cpp)
+#target_link_libraries(leglistener ${catkin_LIBRARIES})
+#add_dependencies(leglistener beginner_tutorials_generate_messages_cpp)
 
 
