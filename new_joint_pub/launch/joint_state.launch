@@ -1,0 +1,5 @@
+<launch>
+        <arg name="model" default="$(find realsense2_camera)/launch/mini_cheetah_simple_v2.urdf"/>
+        <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />	
+        <node name="state_publisher" pkg="new_joint_pub" type="state_publisher" />
+</launch>
