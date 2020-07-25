@@ -24,4 +24,7 @@ Replace all launch file in realsense2_camera, and rtabmap.launch in package rtab
 ![](Resource/cheetah.jpg)
 ![](Resource/3D1.PNG)
 ![](Resource/raw_pointcloud.PNG)
+![](Resource/3DVisu.gif)
+![](Resource/joint.gif)
+
 
