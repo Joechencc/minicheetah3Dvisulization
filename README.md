@@ -22,6 +22,8 @@ https://gist.github.com/IgniparousTempest/ce5fadbe742526d10d6bdbf15c3a3fe7
 
 Replace all launch file in realsense2_camera, and rtabmap.launch in package rtabmap_ros.
 
+If you have any question, please contact joecc@umich.edu
+
 
 ![](Resource/cheetah.jpg)
 ![](Resource/3D1.PNG)
