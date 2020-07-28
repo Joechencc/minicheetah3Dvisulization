@@ -17,7 +17,16 @@ https://gist.github.com/IgniparousTempest/ce5fadbe742526d10d6bdbf15c3a3fe7 (repl
     Realsense https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
 5. depthimage_to_laserscan https://github.com/ros-perception/depthimage_to_laserscan
 6. rtabmap https://github.com/introlab/rtabmap_ros refer to this
-7. lcm-to-ROS 
+7. lcm-to-ROS (install lcm prior to this)
+    (we recommend 1.3.1, available from here https://github.com/lcm-proj/lcm/releases/download/v1.3.1/lcm-1.3.1.zip)
+    To install:
+    unzip lcm-1.3.1.zip
+    cd lcm-1.3.1
+    ./configure
+    make -j
+    sudo make install
+    sudo ldconfig
+
 8. new_joint_state(you may buld this at last)
 
 Replace all launch file in realsense2_camera, and rtabmap.launch in package rtabmap_ros.
