@@ -28,6 +28,7 @@ https://gist.github.com/IgniparousTempest/ce5fadbe742526d10d6bdbf15c3a3fe7 (repl
     sudo ldconfig
 
 8. new_joint_state(you may buld this at last)
+9. sudo apt install ros-kinetic-joint-state-publisher-gui
 
 Replace all launch file in realsense2_camera, and rtabmap.launch in package rtabmap_ros.
 
