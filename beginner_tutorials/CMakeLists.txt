@@ -119,6 +119,7 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  
 )
 
 ## Declare a C++ library
@@ -216,6 +217,7 @@ target_link_libraries(listener ${catkin_LIBRARIES})
 
 add_executable(pointcloudlistener src/pointcloudlistener.cpp)
 target_link_libraries(pointcloudlistener ${catkin_LIBRARIES})
+
 #add_dependencies(pointcloudlistener beginner_tutorials_generate_messages_cpp)
 
 #add_executable(leglistener src/leglistener.cpp)

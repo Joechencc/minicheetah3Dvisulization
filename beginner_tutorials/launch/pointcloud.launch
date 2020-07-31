@@ -1,0 +1,5 @@
+<launch>
+        <node name="pointcloudlistener" pkg="beginner_tutorials" type="pointcloudlistener">
+		<remap from="normal_pointcloud" to="camera/depth_registered/normalpoints"/>
+	</node>
+</launch>
