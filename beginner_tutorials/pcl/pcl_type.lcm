@@ -1,0 +1,12 @@
+package pcl;
+
+struct pcl_type
+{
+
+    double      xarray[30];
+    double      yarray[30];
+    double      zarray[30];
+
+}
+
+

@@ -8,20 +8,37 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include <lcm/lcm-cpp.hpp>
+#include "pcl/pcl_type.hpp"
 
 typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
 typedef pcl::PointCloud<pcl::PointNormal> PointCloudN;
 
 int count = 0;
 int row = 501; //-250 cm to +250, 1cm away
-int column = 501; // 20 to 520 cm, 2cm away
+int column = 501; // 15 to 515 cm, 2cm away
+
 
 double pc_matrix[501][501];
 
 void callback(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr& msg)
 //void callback(const sensor_msgs::PointCloud2ConstPtr& input)
 {	
+	///////lcm 
+	lcm::LCM lcm;
+
+	if(!lcm.good()){
+	  return;
+	}
+	
+	pcl::pcl_type mydata;
+
+	for (int i=0; i < 30; i++){
+		mydata.xarray[i] = 0;
+		mydata.yarray[i] = 0;
+		mydata.zarray[i] = 0;
+	}
+
 	////////downsampling
     	pcl::PointCloud<pcl::PointXYZ>::Ptr cloudInput;
     	cloudInput.reset(new pcl::PointCloud<pcl::PointXYZ> (*msg));
@@ -54,38 +71,45 @@ void callback(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr& msg)
 	normalEstimation.setViewPoint(0, 0, 1.0);																																															
 	normalEstimation.compute (cloud_normals_); 
 	int index = 0;
+	int index2 = 0;
+
 	long temp_size = cloudFiltered->points.size();
-	ROS_INFO("point:%ld",temp_size);
+	//ROS_INFO("point:%ld",temp_size);
 
 	double x_limit_lower = -1.5;
 	double x_limit_upper = 1.5;
 	double z_limit_upper = 3;
-
 	memset(pc_matrix, 0, sizeof(pc_matrix[0][0]) * row * column);
-
 	std::ofstream myfile;
-	//std::string file_name=;
   	myfile.open("/home/chaonew/Desktop/temp_folder/example.txt");
 	for(unsigned int i=0; i < temp_size; i=i+1) {
 	// x range -35m to 35 m, y ranges -25 to 25m, z ranges 0 to 66
 	    cloud_normals_.points[index].x = cloudFiltered->points[i].x;
 	    cloud_normals_.points[index].y = cloudFiltered->points[i].y;
 	    cloud_normals_.points[index].z = cloudFiltered->points[i].z;
-	    int index_z = (cloud_normals_.points[index].z / 0.01) - 20;
+	    int index_z = (cloud_normals_.points[index].z / 0.01) - 15;
 	    int index_x = (cloud_normals_.points[index].x / 0.01) + 250;	
 
-	    
 	    if ((index_x < row) && (index_z < column)){
-  		//ROS_INFO("x:%d",index_x);
-	    	//ROS_INFO("z:%d",index_z);
 		pc_matrix[index_z][index_x]= -cloud_normals_.points[index].y; //y axis is pointing downward
-		//ROS_INFO("y:%f",pc_matrix[index_z][index_x]);
-		//ROS_INFO("pc_matrix_x:%f",cloud_normals_.points[index].x);
-		//ROS_INFO("pc_matrix_z:%f",cloud_normals_.points[index].z);
-		//ROS_INFO("pc_matrix_y:%f",pc_matrix[index_z][index_x]);
+		//ROS_INFO("index2:%d",index2);		
+		if(index2!=30){	
+			mydata.xarray[index2] =cloud_normals_.points[index].x;
+			mydata.yarray[index2] =cloud_normals_.points[index].y;
+			mydata.zarray[index2] =cloud_normals_.points[index].z;
+		//ROS_INFO("mydata.xarray[index2]:%lf",mydata.xarray[index2]);
+		}
+		else if((index2==30) &&(mydata.zarray[0]>cloud_normals_.points[index].z)){
+			mydata.xarray[0] =cloud_normals_.points[index].x;
+			mydata.yarray[0] =cloud_normals_.points[index].y;
+			mydata.zarray[0] =cloud_normals_.points[index].z;
+		}		
+		index2 ++;
+		if(index2>30){
+			index2 = 30;
+		}
 	    }
 	    index ++;
-	    //ROS_INFO("point:%d",index);
 	}
 	for(int i=10; i< row; i=i+10){
 		for(int j=10; j< column; j=j+10){
@@ -98,9 +122,8 @@ void callback(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr& msg)
 		}
 	}
 	myfile.close();
-	
+	lcm.publish("pcl_topic", &mydata);	
 	pc_pub.publish(cloud_normals_);
-	
 	ros::spinOnce();
 
     	loop_rate.sleep();

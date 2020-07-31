@@ -12,7 +12,18 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   PCL
+  message_generation
 )
+
+SET(CMAKE_MODULE_PATH ${${PROJECT_NAME}_SOURCE_DIR}/cmake)
+
+find_package(lcm REQUIRED)
+if (LCM_FOUND)
+    include_directories(${LCM_INCLUDE_DIRS})
+    # add_subdirectory(src)
+endif (LCM_FOUND)
+
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -106,7 +117,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES beginner_tutorials
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+  CATKIN_DEPENDS roscpp std_msgs
 #  DEPENDS system_lib
 )
 
@@ -116,11 +127,11 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-  
+include_directories( 
+    ${${PROJECT_NAME}_SOURCE_DIR}
+    ${catkin_INCLUDE_DIRS} 
 )
+
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -216,7 +227,11 @@ target_link_libraries(listener ${catkin_LIBRARIES})
 #add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 
 add_executable(pointcloudlistener src/pointcloudlistener.cpp)
-target_link_libraries(pointcloudlistener ${catkin_LIBRARIES})
+target_link_libraries(pointcloudlistener ${catkin_LIBRARIES} ${LCM_LIBRARY})
+add_dependencies(
+    ${${PROJECT_NAME}_EXPORTED_TARGETS} 
+    ${catkin_EXPORTED_TARGETS}
+)
 
 #add_dependencies(pointcloudlistener beginner_tutorials_generate_messages_cpp)
 
