@@ -9,7 +9,11 @@ https://gist.github.com/IgniparousTempest/ce5fadbe742526d10d6bdbf15c3a3fe7 (repl
 
     https://github.com/PointCloudLibrary/pcl.git       git checkout tags/pcl-1.8.0 -b pcl-1.8.0
 
-    1.11 for melodic          git checkout tags/pcl-1.11.0 -b pcl-1.11.0
+ run Ubuntu_18.04_PCL_1.11.0_install.sh 
+   1.11 for melodic          git checkout tags/pcl-1.11.0 -b pcl-1.11.0
+    
+LCM installation:
+  https://github.com/lcm-proj/lcm/releases/download/v1.3.1/lcm-1.3.1.zip
     
 2. use beginner_tutorial for listening PCl
 3. Vision_opencv  https://github.com/ros-perception/vision_opencv  (Branch:need to be checked out base on your ROS version)
