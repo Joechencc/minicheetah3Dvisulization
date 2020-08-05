@@ -11,7 +11,7 @@ LCM installation:
   https://github.com/lcm-proj/lcm/releases/download/v1.3.1/lcm-1.3.1.zip
     
 2. use beginner_tutorial for listening PCl
-3. Vision_opencv  https://github.com/ros-perception/vision_opencv  (Branch:need to be checked out base on your ROS version)
+3. Vision_opencv  https://github.com/ros-perception/vision_opencv  (Branch:need to be checked out base on your ROS version)   downgrade opencv to 3.x.x https://answers.opencv.org/question/194106/uninstalling-opencv-400-to-34/
 4. Realsense_ROS https://github.com/IntelRealSense/realsense-ros
     Realsense https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
 5. depthimage_to_laserscan https://github.com/ros-perception/depthimage_to_laserscan
