@@ -4,12 +4,7 @@ This will combine with MiniCheetah code and doing visualization
 
 
 Installation Guide:
-1. PCL 1.8 for Kinetic   
-https://gist.github.com/IgniparousTempest/ce5fadbe742526d10d6bdbf15c3a3fe7 (replace the git clone part with the correct version)
-
-    https://github.com/PointCloudLibrary/pcl.git       git checkout tags/pcl-1.8.0 -b pcl-1.8.0
-
- run Ubuntu_18.04_PCL_1.11.0_install.sh 
+1. PCL 1.11 for Melodic  
    1.11 for melodic          git checkout tags/pcl-1.11.0 -b pcl-1.11.0
     
 LCM installation:
@@ -32,7 +27,7 @@ LCM installation:
     sudo ldconfig
 
 8. new_joint_state(you may buld this at last)
-9. sudo apt install ros-kinetic-joint-state-publisher-gui
+9. sudo apt install ros-melodic-joint-state-publisher-gui
 
 Replace all launch file in realsense2_camera, and rtabmap.launch in package rtabmap_ros.
 
