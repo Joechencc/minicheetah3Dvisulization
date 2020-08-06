@@ -6,7 +6,8 @@ This will combine with MiniCheetah code and doing visualization
 Installation Guide:
 1. PCL 1.11 for Melodic  
    1.11 for melodic          git checkout tags/pcl-1.11.0 -b pcl-1.11.0
-    
+   https://github.com/ros-perception/perception_pcl
+   
 LCM installation:
   https://github.com/lcm-proj/lcm/releases/download/v1.3.1/lcm-1.3.1.zip
     
