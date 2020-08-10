@@ -44,5 +44,6 @@ If you have any question, please contact joecc@umich.edu
 ![](Resource/raw_pointcloud.PNG)
 ![](Resource/3DVisu.gif)
 ![](Resource/joint.gif)
+![](Resource/moveandsee.gif)
 
 
