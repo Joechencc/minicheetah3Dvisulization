@@ -18,7 +18,7 @@ typedef pcl::PointCloud<pcl::PointNormal> PointCloudN;
 
 int count = 0;
 //int row = 141; // 10 to 150 cm, 1cm away
-//int column = 201; //-100 cm to +100, 1cm away
+//int column = 161; //-80 cm to +80, 1cm away
 
 //double pc_matrix[141][201];
 
@@ -82,8 +82,12 @@ void callback(const boost::shared_ptr<const pcl::PointCloud<pcl::PointXYZ> >& ms
 	int index = 0;
 	int index2 = 0;
 
-	long temp_size = cloudFiltered2->points.size();
-	ROS_INFO("point:%ld",temp_size);
+	int temp_size = cloudFiltered2->points.size();
+	int limit_size = 30;
+	if (temp_size > limit_size){
+		temp_size = 30;
+	}
+	//ROS_INFO("point:%ld",temp_size);
 
 	//double x_limit_lower = -1.5;
 	//double x_limit_upper = 1.5;
@@ -91,7 +95,7 @@ void callback(const boost::shared_ptr<const pcl::PointCloud<pcl::PointXYZ> >& ms
 	//memset(pc_matrix, 0, sizeof(pc_matrix[0][0]) * row * column);
 	//std::ofstream myfile;
   	//myfile.open("/home/chaonew/Desktop/temp_folder/example.txt");
-	for(unsigned int i=0; i < temp_size; i=i+1) {
+	for(unsigned int i=0; i < temp_size ; i=i+1) {
 	// x range -35m to 35 m, y ranges -25 to 25m, z ranges 0 to 66
 	    cloud_normals_.points[index].x = cloudFiltered2->points[i].x;
 	    cloud_normals_.points[index].y = cloudFiltered2->points[i].y;
